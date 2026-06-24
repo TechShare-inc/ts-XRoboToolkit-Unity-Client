@@ -23,10 +23,12 @@ public class ToggleCameraClippingPlane : MonoBehaviour
         
         // Get the right controller directly using XRNode
         var rightControllerDevice = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        
-        // Check if B button (secondaryButton) is pressed
         bool buttonValue = false;
-        if (rightControllerDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+        // Check if B button (secondaryButton) is pressed
+        // if (rightControllerDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out buttonValue) && buttonValue)
+        // Check if grip button (side button) is pressed
+        if (rightControllerDevice.TryGetFeatureValue(CommonUsages.gripButton, out buttonValue) && buttonValue)
+
         {
             // Only toggle on button press (not while holding)
             if (!wasButtonPressed)
